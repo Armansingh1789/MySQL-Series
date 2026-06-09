@@ -1,0 +1,64 @@
+-- GROUP BY 
+-- GROUP BY BASICALLY Group all rows THAT HAVE THE SAME VALUES IN SPEFICIS COLUMNS OR COLUMN 
+-- GROUP BY WORK ON,Y WITH AGGREGATE FUNTION LIKE AVG,SUM,MAX,MIN AD MORE 
+
+ SELECT * FROM startersql.employee;
+ 
+ -- WE USE COLUMN IN GROUP BY WHICH IS USED IN SELECT STATEMNET 
+ -- IF WE WRITE SELECT GENDER , AVG() THEN IT WILL BE GROUP BY GENDER IF GENDER WILL MISS IN GROUP BY IT WILL NEVER WORK
+ SELECT Gender 
+FROM startersql.employee -- IT'S RIGHT
+GROUP BY Gender;
+ 
+SELECT First_Name
+FROM startersql.employee -- IT'S WRONG 
+GROUP BY Gender;
+
+SELECT Department_Region
+FROM startersql.employee
+GROUP BY Department_Region;
+
+-- WE USE TWO COLUMN IN GROUP BY BOTH HAVE DIFFERENT VALUES 
+SELECT Department_Region,Salary
+FROM startersql.employee
+GROUP BY Department_Region,Salary;
+
+-- HERE IMPORTANT QUIRY
+SELECT Gender,MIN(Age),MAX(Age),COUNT(Age),AVG(Age)
+FROM startersql.employee
+GROUP BY Gender;
+
+-- ________________THE ORDER BY CLAUSE_________________________________ --
+
+-- GENERALLY IT'S USE FOR SORTING COLUMN IN ASCENDING OR DESCENDING 
+-- LET'S TRY OUT 
+
+SELECT *
+FROM startersql.employee
+ORDER BY First_Name DESC
+;
+--  WE CAN SEE THAT IT TURN FIRST_NAME IN TO DESC Z-TO-A 
+-- BY DEFAULT IT WILL BE ASC A-TO-Z
+
+SELECT *
+FROM startersql.employee
+ORDER BY First_Name 
+;
+
+-- NOW TRY WITH MULTIPLE COLUMNS
+SELECT *
+FROM startersql.employee
+ORDER BY Gender,Age
+;
+
+SELECT *
+FROM startersql.employee
+ORDER BY Gender DESC , Age ASC
+;
+
+-- WE CAN ALSO USE IT BY JUST POSITION 
+-- IN MY CASE Gender COLUMN IN 9TH POSITION AND AGE IN 4TH COLUMN
+SELECT *
+FROM startersql.employee
+ORDER BY 9,4
+;
