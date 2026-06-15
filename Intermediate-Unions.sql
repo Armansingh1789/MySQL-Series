@@ -1,0 +1,40 @@
+# UNIONS
+
+-- WE CAN CONNECT MULTIPLE RESULT IN TO ONE BY USING UNION 
+-- A UNION IS HOW YOU CAN COMBINE ONLY ROWS NOT COLUMNS 
+-- IT RETURN ALL DATA IN SAME COLUMN 
+SELECT First_Name 
+FROM startersql.employee
+UNION 
+SELECT DeptName 
+FROM departments
+;
+-- IT IS JUST MIXING DATA IN TO ONE COLUMN , NOT GOOD FOR US
+
+-- SO WE USE UNION FOR OUR USE LIKE 
+SELECT product FROM orders
+UNION 
+SELECT Product_Name FROM products;
+-- IT ONLY GIVE US UNIQU VALUE AVOIDE duplicate_kaggle
+
+-- IF WE WANT ALL DATA INCLUDING DUPLICATE THEN W USE UNION ALL
+
+SELECT product FROM orders
+UNION ALL
+SELECT Product_Name FROM products;
+
+
+-- HERE THE ACTUAL WORK FOR UNION
+ SELECT First_Name,Last_Name ,'OLD LADY' AS LABEL FROM employee
+ WHERE Age >35 AND Gender='Female'
+ UNION
+ SELECT First_Name,Last_Name ,'OLD MAN' AS LABEL FROM employee
+ WHERE Age >35 AND Gender='Male'
+ UNION
+ SELECT First_Name,Last_Name ,'Highly Paid' AS LABEL FROM employee
+ WHERE Salary > 40000 ;
+ 
+ 
+
+
+

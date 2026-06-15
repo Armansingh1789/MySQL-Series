@@ -1,0 +1,52 @@
+-- USING COMMON TABLE EXPRESSIONS (CTE
+-- A CTE ALLOWS YOU TO DEFINE A SUBQUIRY THAT CAN BE REFEREMCED BY THE MAIN QUIRY
+-- LET MOVE ON CTE SYNTAX
+
+WITH example_cte AS (
+SELECT Gender, MAX(Salary),MIN(Salary),AVG(Salary),SUM(Salary),COUNT(Salary) 
+FROM employee
+GROUP BY Gender
+)
+SELECT * FROM example_cte;
+
+
+
+SELECT * FROM example_cte;
+-- IT WONT WORK BECAUSE IT'S NOT RIGHT SYNTAX
+
+
+WITH example_cte AS (
+SELECT Gender, MAX(Salary) ,MIN(Salary) ,AVG(Salary),SUM(Salary),COUNT(Salary) 
+FROM employee
+GROUP BY Gender
+)
+SELECT MAX(Salary) ,MIN(Salary) ,AVG(Salary),SUM(Salary),COUNT(Salary) FROM example_cte;
+-- IT DOES'T WORK WE CAN DO ACCESS SUBQUIRY COLUMN AS CTE COLUMN
+
+
+-- LET DO MULTIPLE CTE IN SAME Quiry
+WITH CTE_EXP1 AS (
+SELECT emp_id , Salary 
+FROM employee), 
+-- JUST SEPARATE WITH , 
+CTE_EXP2 AS (
+SELECT emp_id,Gender , Age
+FROM employee )
+
+SELECT * 
+FROM CTE_EXP1 
+LEFT JOIN CTE_EXP2 ON CTE_EXP1.emp_id=CTE_EXP2.emp_id; 
+
+-- WE CAN RENAME TABLE COLUMN NAME WHEN CREATING CTE TBALE 
+WITH example_cte(GENDER,MAX_SAL,MIN_SAL,AVG_SAL,SUM_SAL,COUNT_SAL) AS (
+SELECT Gender, MAX(Salary),MIN(Salary),AVG(Salary),SUM(Salary),COUNT(Salary) 
+FROM employee
+GROUP BY Gender
+)
+SELECT * FROM example_cte;
+
+
+
+
+
+
